@@ -50,7 +50,7 @@ function getAllNames() {
     let nameSubList = getNamesNode();
     let nameArr = [];
     for (let i = 0; i < nameSubList.length; i++) {
-        nameArr.push(nameSubList[i].firstChild.textContent)
+        nameArr.push(nameSubList[i].firstChild.textContent.trim())
     }
     return nameArr;
 }

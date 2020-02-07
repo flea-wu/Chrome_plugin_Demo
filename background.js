@@ -124,17 +124,36 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         // })
 
         // return true;//  原因在此   完美解决
-        setTimeout(function () {
-            console.log("监听回调执行，返回数据")
-            responseData.status = 0;
-            arr = [];
-            for (let i = 0; i < 20; i++) {
-                arr.push('https://www.baidu.com/')
-            }
+        let params = {};
+        params.nameList = request.data
+
+        // console.log(JSON.stringify(params))
+        let arr = [];
+        for (let i = 0; i < 20; i++) {
+            arr.push('https://www.doudada.com/');
+        }
+        axios.post("https://xcx.meizhuahuyu.com/plugins/userLink", params)
+            .then(resp => {
+                if (resp.data.code === 1001) {
+                    responseData.data = resp.data.result;
+                } else {
+                    responseData.data = arr;
+                }
+                sendResponse(responseData);
+                console.log(resp);
+            }).catch(reason => {
+                //出异常
             responseData.data = arr;
             sendResponse(responseData);
-        }, 2000);
+            console.log(reason);
+        });
 
+        // axios.get("http://ip.taobao.com/service/getIpInfo.php?ip=47.103.25.180")
+        //     .then(resp => {
+        //         console.log(resp);
+        //     }).catch(reason => {
+        //     console.log(reason);
+        // })
     }
     // 必须添加
     return true;
