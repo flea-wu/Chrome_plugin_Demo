@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "jellow club",
+  "description": "即刻失散俱乐部",
+  "version": "1.0",
+  "background": {
+    "scripts": [
+      "js/axios.min.js",
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "cookies",
+    "storage",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.doudada.com/*",
+        "*://*.toutiao.com/*"
+      ],
+      "js": [
+        "js/vue.js",
+        "js/jquery.min.js",
+        "js/axios.min.js",
+        "js/contentscripts.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icon.jpg",
+    "default_title": "即刻失散俱乐部",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

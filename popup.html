@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>弹出页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 200px;
+            height: 300px;
+        }
+
+        .timeStyle {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div id="app">
+        <span class="timeStyle">
+            当前时间：{{ mytime }}
+        </span>
+        {{ msg }}
+        <br>
+        <input type="text" placeholder="ip地址" v-model="ipaddr">
+        <button @click="clickme">clickme</button>
+        <a href="https://www.doudada.com">打开抖大大</a>
+    </div>
+</section>
+<script src="js/moment.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/popup.js"></script>
+<!--html和js必须分开写-->
+</body>
+</html>
